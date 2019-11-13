@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/css/uikit.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/style/style.css">
+    <title>Skate</title>
+</head>
+
+
+
+
+<body>
+    <div class="uk-position-relative">
+        <img src="images/light.jpg" alt="">
+        <div class="uk-position-top">
+            <nav class="uk-navbar-container uk-navbar-transparent uk-background-primary uk-light" uk-navbar>
+                <div class="uk-navbar-left uk-margin-xlarge-left">
+                    <h1>SK8 LOC8</h1>
+                </div>
+                <div class="uk-navbar-right">
+                    <ul class="uk-navbar-nav">
+                        <li><a href="index.html">Home</a></li>
+                        <li class="uk-active"><a href="parks.html">Skate Parks Near Me</a></li>
+                        <li><a href="shops.html">Skate Shops Near Me</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div><br>
+    <h1 class="uk-heading-line uk-text-center"><span>Skate Parks Near Me</span></h1>
+
+
+
+<html>
+<head> 
+<title>My map</title>
+<link rel='stylesheet' type='text/css' href='sdk/map.css'/>
+<script src='sdk/tomtom.min.js'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style>
+#map {
+height: 500px;
+width: 500px;
+}
+</style>
+</head>
+<body>
+<h1> TOP 5 Sk8 Loc8</h1>
+<br />
+<label>Please Select Option</label>
+<br />
+<select name="cars" id="the_select">
+  <option value="">Please Select Option</option>
+  <option value="29.8866396,-97.9329601">625 E Hopkins St, San Marcos, TX 78666	San Marcos Skate</option>
+  <option value="29.5259371,-98.6446443">8701 Mystic Park, San Antonio, TX 78254 Nani Falcone Skate Park</option>
+  <option value="29.5529185,-98.6191819">6571 Spring Time St, San Antonio, TX 78249	Spring Time Skatepark</option>
+  <option value="29.6848626,-98.1429149">250 S Grape Ave, New Braunfels, TX 78130	Jaws Skate Park </option>
+  <option value="29.4823282,-98.6597287">8746 Timber Path, San Antonio, TX 78250	Blue Skatepark</option>
+</select>
+
+
+
+<div id='weathermap' style="width:50%"></div>
+
+<div id="temperature" style="float:right;margin-top: -450px;"></div>
+
+<script>
+$(function(){
+  $("#the_select").change(function(){
+    //window.location='http://tomtom.technology-minds.com/my-map.html?id=' + this.value
+	//alert(this.value);
+	if(this.value!='')
+	{
+		
+		
+		var dropdownSelect = document.getElementById("the_select");
+		var parkAddress = dropdownSelect.options[dropdownSelect.selectedIndex].text;
+		
+		
+		//var parkaddress = this.value;
+		var latlong = this.value.split(",");
+		//alert(latlong[0]+"--"+latlong[1]);
+		
+		$.ajax({
+			url : "https://cors-anywhere.herokuapp.com/http://tomtom.technology-minds.com/weather_api_request.php",
+			type : 'GET',
+			data : {
+				'lat' : latlong[0],
+				'long' : latlong[1],
+			},
+			//dataType:'jsonp',
+			success : function(data) {              
+				//alert('Data: '+data);
+				$("#temperature").html('');
+				$("#temperature").html(data);
+				//alert(data);
+				//console.log(data);
+			},
+			error : function(request,error)
+			{
+				//alert("Request: "+JSON.stringify(request));
+			}
+		});
+		
+		//return false;
+		
+		
+		document.getElementById('weathermap').innerHTML = '';
+		document.getElementById('weathermap').innerHTML = "<div id='map' style='width: 500px; height: 500px;'></div>";
+		var speedyPizzaCoordinates = [latlong[0], latlong[1]]; 
+		var map = tomtom.L.map('map', {
+		
+		key: 'iZAhBvw5ckar7UniTofXBzCUvfzrPwYp',
+		basePath: '/sdk',
+		//source: 'vector',
+		center: speedyPizzaCoordinates,
+		zoom: 15
+		
+		});
+		
+		
+		var marker = tomtom.L.marker([latlong[0], latlong[1]], {
+            draggable: true
+        }).bindPopup(parkAddress).addTo(map);
+
+        // Show popup each time the marker is moved
+        marker.on('dragend', function(e) {
+            tomtom.reverseGeocode({position: e.target.getLatLng()})
+                .go(function(response) {
+                    if (response && response.address && response.address.freeformAddress) {
+                        marker.setPopupContent(response.address.freeformAddress);
+                    } else {
+                        marker.setPopupContent('No results found');
+                    }
+                    marker.openPopup();
+                });
+        });
+		
+		
+	}
+  });
+	 
+});
+
+</script>
+
+<!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/js/uikit-icons.min.js"></script>
+</body>
+
+</html>
+
+</script>
