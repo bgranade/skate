@@ -1,4 +1,7 @@
-
+#link {
+    float: right;
+    color: blue;
+}
 
 h1 {
     font-family: 'Shadows Into Light', cursive;
