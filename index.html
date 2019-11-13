@@ -18,22 +18,10 @@
 <body>
     
     <div class="uk-position-relative">
-        <img src="images/light.jpg" alt="">
-        <div class="uk-position-top">
-            <nav class="uk-navbar-container uk-navbar-transparent uk-background-primary uk-light" uk-navbar>
-                <div class="uk-navbar-left uk-margin-xlarge-left">
-                    <h1>SK8 LOC8</h1>
-                </div>
-                <div class="uk-navbar-right">
-                    <ul class="uk-navbar-nav">
-                        
-                       
-                    </ul>
-                </div>
-            </nav>
-        </div>
+       
+    </div>
     </div><br>
-    <h1 id="image" class="uk-heading-line uk-text-center"><span>Skate Parks Near Me</span></h1>
+    <h1 id="image" class="uk-heading-line uk-text-center"><span>Sk8-Loc8 Parks Near Me</span></h1>
     <a id="link" href="https://www.yellowpages.com/san-antonio-tx/skateboard-shops">Top 15 skateshops in San Antonio</a>
 
 
@@ -48,15 +36,12 @@
 #map {
 height: 500px;
 width: 500px;
-margin-left: 300px;
+margin-left: 200px;
 }
 </style>
 </head>
 <body>
-<h1> TOP 5 Sk8 Loc8</h1>
-<br />
-<label>Please Select Option</label>
-<br />
+<h1 id="top5"> TOP 5 Sk8-Locations</h1>
 <select name="cars" id="the_select">
   <option value="">Please Select Option</option>
   <option value="29.8866396,-97.9329601">625 E Hopkins St, San Marcos, TX 78666	San Marcos Skate</option>
@@ -74,7 +59,7 @@ margin-left: 300px;
 
 <script>
 $(function(){
-  $("#the_select").change(function(){
+  $("#the_select").change(fusction(){
     //window.location='http://tomtom.technology-minds.com/my-map.html?id=' + this.value
 	//alert(this.value);
 	if(this.value!='')
