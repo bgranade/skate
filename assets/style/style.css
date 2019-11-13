@@ -1,8 +1,21 @@
 #link {
     float: right;
     color: blue;
+    margin-right: 100px;
 }
 
 h1 {
     font-family: 'Shadows Into Light', cursive;
+}
+body{
+    background-color: rgb(176, 190, 228);
+}
+#the_select{
+margin-left: 200px;
+}
+#top5 {
+    margin-left: 200px;
+}
+#temperature {
+    margin-right: 100px;
 }
