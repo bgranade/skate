@@ -1,6 +1,7 @@
 #image {
     color: blue;
 }
+
 #link {
     float: right;
     color: rgb(243, 17, 35);
@@ -15,20 +16,23 @@ h1 {
 margin-left: 200px;
 
 }
+
 #top5 {
     margin-left: 200px;
 }
+
 #temperature {
     margin-right: 100px;
 }
+
 #map {
     height: 500px;
     width: 500px;
     margin-left: 200px;
     }
+
 body {
     
-        background-image: url("../Images/skate.png"); */
-        background-color: rgb(176, 190, 228);
-        
+        background-image: url("../Images/skate.png");
+        background-color: rgb(176, 190, 228);   
     }
