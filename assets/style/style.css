@@ -1,11 +1,14 @@
 #image {
-    color: blue;
+    color: red;
+    font-size: 75px;
 }
 
 #link {
     float: right;
-    color: rgb(243, 17, 35);
+    color: blue;
     margin-right: 100px;
+    text-decoration: underline;
+    font-size: 25px;
 }
 
 h1 {
@@ -19,6 +22,7 @@ margin-left: 200px;
 
 #top5 {
     margin-left: 200px;
+    color: red;
 }
 
 #temperature {
@@ -33,6 +37,8 @@ margin-left: 200px;
 
 body {
     
-        background-image: url("../Images/skate.png");
+        background-image: url("../Images/silhouette.jpg");
         background-color: rgb(176, 190, 228);   
-    }
+        background-position: right;
+        
+}
